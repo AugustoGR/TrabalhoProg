@@ -23,7 +23,9 @@ Route::middleware(['auth'])->group(function(){
         return view('home');
     });
 
-
+    Route::get('/contato', function () {
+        return view('contato');
+    });
     
     Route::get('/item', function()
     {
@@ -32,6 +34,10 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/carrinho', function()
     {
         return view('carrinho');
+    });
+    
+    Route::get('/sobre', function () {
+        return view('sobre');
     });
 });
 

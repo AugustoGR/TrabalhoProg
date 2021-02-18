@@ -35,7 +35,10 @@
 
      
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Fale Conosco</a>
+        <a class="nav-link text-white" href="{{ url('/contato') }}">Fale Conosco</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{{ url('/sobre') }}">Sobre</a>
       </li>
       <li class="nav-item ">
         <a class="nav-link text-white" href="{{ url('/carrinho') }}"> Carrinho <img  src="https://cdn.discordapp.com/attachments/592511224479088655/811746830105706521/tts.png" width="20" height="20" class="d-inline-block align-top border-secondary" alt=""></a>
