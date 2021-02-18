@@ -23,7 +23,7 @@
     <div id="app">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-primary text-white">
-    <a class="navbar-brand text-white" href="{{ url('/home') }}">
+    <a class="navbar-brand text-white" href="{{url('/home')}}">
                 SexShop - Gutins
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -33,7 +33,7 @@
   <div class="collapse navbar-collapse " id="navbarSupportedContent">
     <ul class="navbar-nav  mr-auto ml-5">
 
-     
+
       <li class="nav-item">
         <a class="nav-link text-white" href="{{ url('/contato') }}">Fale Conosco</a>
       </li>
@@ -43,12 +43,12 @@
       <li class="nav-item ">
         <a class="nav-link text-white" href="{{ url('/carrinho') }}"> Carrinho <img  src="https://cdn.discordapp.com/attachments/592511224479088655/811746830105706521/tts.png" width="20" height="20" class="d-inline-block align-top border-secondary" alt=""></a>
       </li>
-   
-    
+
+
     </ul>
-    
+
   </div>
-    
+
 
                 <div class="collapse navbar-collapse mr-5 " id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -65,7 +65,7 @@
                                     <a class="nav-link " href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -97,7 +97,7 @@
       <button class="btn btn-outline-secondary text-white my-2 my-sm-0" type="submit">Search</button>
     </form>
             </div>
-     
+
         </nav>
 
         <main class="py-4">

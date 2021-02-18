@@ -19,6 +19,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::middleware(['auth'])->group(function(){
+    Route::resource('Item','ItemController');
+
     Route::get('/', function () {
         return view('home');
     });
@@ -26,16 +28,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/contato', function () {
         return view('contato');
     });
-    
-    Route::get('/item', function()
-    {
-        return view('item');
-    });
+
+
     Route::get('/carrinho', function()
     {
         return view('carrinho');
     });
-    
+
     Route::get('/sobre', function () {
         return view('sobre');
     });

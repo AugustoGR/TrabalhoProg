@@ -39,7 +39,6 @@
                 <a href="{{route('Item.show',1)}}" class="list-group-item">Masculino</a>
                 <a href="{{route('Item.show',2)}}" class="list-group-item">Feminino</a>
 
-
             </div>
 
         </div>
@@ -55,7 +54,13 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img class="d-block img-fluid" src="https://cdn.discordapp.com/attachments/592511224479088655/812060068836671518/222.png" alt="First slide">
+                        <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -69,7 +74,27 @@
             </div>
 
 
-                <!-- /.row -->
+            <div class="row">
+                @foreach($itens as $item)
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">{{$item->nome}}</a>
+                                </h4>
+                                <h5>{{$item->preco}}</h5>
+                                <p class="card-text">{{$item->descricao}}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <!-- /.row -->
 
         </div>
         <!-- /.col-lg-9 -->
@@ -81,7 +106,6 @@
 <!-- /.container -->
 
 <!-- Footer -->
-
 
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
