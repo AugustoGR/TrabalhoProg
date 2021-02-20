@@ -12,10 +12,17 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-            $itens = Item::all();
-            return view('ListAll', ['itens' => $itens]);
+
+            $search = $request->search;
+            if($search){
+                $itens = Item::where([['nome', 'like', '%'.$search.'%']
+            ])->get();
+            }else{
+                $itens = Item::all();
+            }
+            return view('ListAll', ['itens' => $itens,'search'=>$search]);
     }
 
     /**

@@ -46,8 +46,13 @@
         <!-- /.col-lg-3 -->
 
         <div class="col-lg-9">
+            @if($search)
+                <span class="h2">Você acaba de buscar por: {{$search}}</span>
+            @else
+                <span class="h2">Todos os Produtos</span>
+            @endif
 
-            <span class="h2">Todos os Produtos</span>
+
 
 
             <div class="row">
