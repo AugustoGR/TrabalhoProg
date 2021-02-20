@@ -35,7 +35,7 @@
 
             <h1 class="my-4">Gutins</h1>
             <div class="list-group">
-                <a href="{{route('Item.index')}}" class="list-group-item">Itens em Destaque</a>
+
                 <a href="{{route('Item.show',50)}}" class="list-group-item">Masculino</a>
                 <a href="{{route('Item.show',51)}}" class="list-group-item">Feminino</a>
 

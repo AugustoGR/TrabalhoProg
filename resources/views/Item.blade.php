@@ -47,7 +47,7 @@
       <div class="col-lg-9">
           @foreach($itens as $item)
         <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+            <a href="#"><img class="card-img-top" src="{{$item->link}}" height="400" width="700" alt=""></a>
           <div class="card-body">
             <h3 class="card-title">{{$item->nome}}</h3>
             <h4>{{$item->preco}}</h4>

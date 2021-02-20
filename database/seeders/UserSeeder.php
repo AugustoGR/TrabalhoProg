@@ -15,10 +15,9 @@ class UserSeeder extends Seeder
     public function run()
     {
         $usuarios = array(
-            array('name' => 'Guilherme', 'email' => 'guilherme@teste.com', 'password' => Hash::make('123456789')),
-        array('name' => 'Augusto', 'email' => 'augusto@teste.com', 'password' => Hash::make('123456789')),);
+            array('name' => 'Guilherme', 'email' => 'teste@teste.com', 'password' => Hash::make('password'),));
         foreach ($usuarios as $usuario) {
-            User::create($usuario);
+            \App\Models\User::create($usuario);
         }
     }
 }

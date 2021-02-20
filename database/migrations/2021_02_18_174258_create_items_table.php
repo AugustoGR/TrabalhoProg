@@ -19,6 +19,7 @@ class CreateItemsTable extends Migration
             $table->string('preco');
             $table->string('descricao');
             $table->string('tipo');
+            $table->string('link');
             $table->timestamps();
         });
     }
