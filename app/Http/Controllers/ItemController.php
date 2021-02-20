@@ -47,6 +47,22 @@ class ItemController extends Controller
      */
     public function show($item)
     {
+        if($item == 50){
+            $itens = Item::where('tipo', 'Masculino')->get();
+            return view('ListTipo',['itens'=>$itens]);
+        }
+        elseif ($item == 51){
+            $itens = Item::where('tipo', 'Feminino')->get();
+            return view('ListTipo',['itens'=>$itens]);
+        }else{
+            $itens = Item::where('id', $item)->get();
+            return view('Item',['itens'=>$itens]);
+        }
+
+    }
+
+    public function show2($item)
+    {
         if($item == 1){
             $itens = Item::where('tipo', 'Masculino')->get();
         }
@@ -54,11 +70,6 @@ class ItemController extends Controller
             $itens = Item::where('tipo', 'Feminino')->get();
         }
         return view('ListTipo',['itens'=>$itens]);
-
-
-
-
-
     }
 
     /**

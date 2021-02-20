@@ -17,17 +17,24 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/sobre', function () {
+    return view('sobre');
+});
+
+
+Route::get('/contato', function () {
+    return view('contato');
+});
+Route::resource('Item','ItemController');
+
 
 Route::middleware(['auth'])->group(function(){
-    Route::resource('Item','ItemController');
 
-    Route::get('/', function () {
-        return view('home');
-    });
 
-    Route::get('/contato', function () {
-        return view('contato');
-    });
 
 
     Route::get('/carrinho', function()
@@ -35,9 +42,7 @@ Route::middleware(['auth'])->group(function(){
         return view('carrinho');
     });
 
-    Route::get('/sobre', function () {
-        return view('sobre');
-    });
+
 });
 
 

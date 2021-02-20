@@ -23,7 +23,7 @@
     <div id="app">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-primary text-white">
-    <a class="navbar-brand text-white" href="{{url('/home')}}">
+    <a class="navbar-brand text-white" href="{{url('/')}}">
                 SexShop - Gutins
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

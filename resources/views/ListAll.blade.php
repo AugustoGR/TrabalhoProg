@@ -36,8 +36,8 @@
             <h1 class="my-4">Gutins</h1>
             <div class="list-group">
                 <a href="{{route('Item.index')}}" class="list-group-item">Itens em Destaque</a>
-                <a href="{{route('Item.show',1)}}" class="list-group-item">Masculino</a>
-                <a href="{{route('Item.show',2)}}" class="list-group-item">Feminino</a>
+                <a href="{{route('Item.show',50)}}" class="list-group-item">Masculino</a>
+                <a href="{{route('Item.show',51)}}" class="list-group-item">Feminino</a>
 
             </div>
 
@@ -81,14 +81,13 @@
                             <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <a href="#">{{$item->nome}}</a>
+                                    <a href="{{route('Item.show',$item->id)}}">{{$item->nome}}</a>
                                 </h4>
                                 <h5>{{$item->preco}}</h5>
                                 <p class="card-text">{{$item->descricao}}</p>
                             </div>
-                            <div class="card-footer">
-                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                            </div>
+
+
                         </div>
                     </div>
                 @endforeach
