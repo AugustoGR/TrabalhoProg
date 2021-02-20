@@ -19,15 +19,14 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 
 
-Route::get('/sobre', function () {
+Route::get('/Sobre', function () {
     return view('sobre');
 });
 
 
-Route::get('/contato', function () {
-    return view('contato');
-});
+
 Route::resource('Item','ItemController');
+Route::resource('Contato','ContatoController');
 
 
 Route::middleware(['auth'])->group(function(){
