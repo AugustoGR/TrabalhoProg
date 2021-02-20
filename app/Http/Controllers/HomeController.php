@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $itens = Item::all();
+        $itens = Item::where('destaque', '1')->get();
         return view('home', ['itens' => $itens]);
     }
 }

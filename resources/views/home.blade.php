@@ -35,8 +35,10 @@
 
             <h1 class="my-4">Gutins</h1>
             <div class="list-group">
-                <a href="{{route('Item.show',50)}}" class="list-group-item">Masculino</a>
-                <a href="{{route('Item.show',51)}}" class="list-group-item">Feminino</a>
+                <a href="{{url('/')}}" class="list-group-item">Destaques da Semana</a>
+                <a href="{{route('Item.index')}}" class="list-group-item">Todos os Produtos</a>
+                <a href="{{route('Item.show',98)}}" class="list-group-item">Masculino</a>
+                <a href="{{route('Item.show',99)}}" class="list-group-item">Feminino</a>
 
             </div>
 
@@ -45,12 +47,12 @@
 
         <div class="col-lg-9">
 
-
+            <span class="h2">Destaques da semana</span>
 
 
             <div class="row">
                 @foreach($itens as $item)
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="col-lg-4 col-md-6 mb-4 mt-4">
                         <div class="card h-100">
                             <a href="#"><img class="card-img-top" src="{{$item->link}}" height="400" width="700" alt=""></a>
                             <div class="card-body">

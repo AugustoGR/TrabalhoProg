@@ -20,6 +20,7 @@ class CreateItemsTable extends Migration
             $table->string('descricao');
             $table->string('tipo');
             $table->string('link');
+            $table->integer('destaque');
             $table->timestamps();
         });
     }

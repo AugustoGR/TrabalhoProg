@@ -47,11 +47,11 @@ class ItemController extends Controller
      */
     public function show($item)
     {
-        if($item == 50){
+        if($item == 98){
             $itens = Item::where('tipo', 'Masculino')->get();
             return view('ListTipo',['itens'=>$itens]);
         }
-        elseif ($item == 51){
+        elseif ($item == 99){
             $itens = Item::where('tipo', 'Feminino')->get();
             return view('ListTipo',['itens'=>$itens]);
         }else{
