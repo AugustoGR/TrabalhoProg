@@ -50,11 +50,18 @@
         <div class="card mt-4">
             <a href="#"><img class="card-img-top" src="{{$item->link}}" height="400" width="700" alt=""></a>
           <div class="card-body">
-            <h3 class="card-title">{{$item->nome}}</h3>
-            <h4>{{$item->preco}}</h4>
-            <p class="card-text">{{$item->descricao}}</p>
-              <button type="button" class="btn btn-success">Comprar</button>
 
+            <h3 class="card-title">{{$item->nome}}</h3>
+
+            <h4>{{$item->preco}}</h4>
+
+            <p class="card-text">{{$item->descricao}}</p>
+
+              <form action="{{route('Carrinho.index')}}" method="GET">
+
+                  <input type="hidden" id="custId" name="id" value="{{$item->id}}">
+                  <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
+              </form>
           </div>
             @endforeach
         </div>

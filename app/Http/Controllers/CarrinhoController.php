@@ -2,20 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use Illuminate\Http\Request;
-use Mail;
-use App\Mail\SendMail;
 
-class ContatoController extends Controller
+class CarrinhoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('Contato');
+        session_start();
+        if(!isset($_SESSION['itens'])){
+            $_SESSION['itens'] = array();
+        }
+        $idItem = $request->id;
+        if(!isset($_SESSION['itens'][$idItem])){
+            $_SESSION['itens'][$idItem] = 1;
+        }else{
+            $_SESSION['itens'][$idItem] += 1;
+        }
+        if(count($_SESSION['itens'])==0){
+            echo 'carrinho vazio';
+        }else{
+            $carItem = 0;
+            foreach ($_SESSION['itens'] as $idItem => $quantidade)
+            {
+                $CarItem = Item::where('id', $idItem)->get();
+                echo 'nome: '.$carItem[0]->nome.'';
+            }
+
+        }
+
     }
 
     /**
@@ -24,10 +44,10 @@ class ContatoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
-    }
 
+    {
+
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -36,22 +56,9 @@ class ContatoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nome' =>'required',
-            'texto' =>'required'
-        ]);
 
-        $data = array(
-          'nome' => $request->nome,
-          'texto' => $request->texto
-        );
-
-        Mail::to(auth()->user()->email)
-            ->send(new SendMail($data));
-
-        return back()
-            ->with('msg', 'Sua dúvida já foi enviada para nossa equipe de contado, em breve lhe responderemos');
     }
+
 
     /**
      * Display the specified resource.

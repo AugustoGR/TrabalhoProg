@@ -32,12 +32,10 @@ Route::resource('Contato','ContatoController');
 Route::middleware(['auth'])->group(function(){
 
 
+    Route::resource('Carrinho','CarrinhoController');
 
 
-    Route::get('/carrinho', function()
-    {
-        return view('carrinho');
-    });
+
 
 
 });
