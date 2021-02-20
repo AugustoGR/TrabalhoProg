@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Mail;
+use App\Mail\SendMail;
 
 class ContatoController extends Controller
 {
@@ -34,7 +36,21 @@ class ContatoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' =>'required',
+            'texto' =>'required'
+        ]);
+
+        $data = array(
+          'nome' => $request->nome,
+          'texto' => $request->texto
+        );
+
+        Mail::to(config('mail.from.address'))
+            ->send(new SendMail($data));
+
+        return back()
+            ->with('msg', 'Sua dúvida já foi enviada para nossa equipe de contado, em breve lhe responderemos');
     }
 
     /**
