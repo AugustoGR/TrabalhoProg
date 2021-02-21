@@ -139,8 +139,8 @@
                         </div>
                     @endif
 
-
-                    <button  type="submit" class="btn btn-success">Finalizar Compra</button>
+                    @if(session('carrinho'))<button  type="submit" class="btn btn-success">Finalizar Compra</button>
+                    @endif
                 </form>
             </footer>
 
