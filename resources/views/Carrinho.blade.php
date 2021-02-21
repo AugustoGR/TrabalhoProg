@@ -30,7 +30,10 @@
             @php $total = 0; @endphp
             @if(session('carrinho'))
                 @foreach(session('carrinho') as $id => $item)
-
+                    @php
+                        $sub_total = $item['preco'] * $item['quantidade'];
+                        $total += $sub_total;
+                    @endphp
 
                     <div class="cart-body">
 
@@ -44,32 +47,56 @@
 
                                 </div>
 
-                                <div class="cart-row-cell desc ml-3 mt-3">
+                                <div class="cart-row-cell desc ml-3 mt-2">
 
+                                    <span>Item:</span>
                                     <h5>{{$item['nome']}}</h5>
 
                                 </div>
 
-                                <div class="cart-row-cell quant mt-3">
-
+                                <div class="h4 cart-row-cell quant mt-2">
+                                    <span>Quantidade:</span>
                                     <ul>
-                                        <li><a href="#">-</a></li>
+
+                                        <form action="{{route('Carrinho.update',[$id])}}" class="float-right h5" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="mt-3">
+                                                <input type="hidden" id="custId" name="tp" value="-">
+                                                <button class="bg-danger ml-2 mr-2 text-white">-</button>
+                                            </div> </form>
 
                                         <li>{{$item['quantidade']}}</li>
 
-                                        <li><a href="#">+</a></li>
+                                        <form action="{{route('Carrinho.update',[$id])}}" class="float-right h5" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="mt-3">
+                                                <input type="hidden" id="custId" name="tp" value="+">
+                                                <button class="bg-danger ml-2 mr-2 text-white">+</button>
+                                            </div> </form>
                                     </ul>
 
                                 </div>
 
                                 <div class="cart-row-cell amount">
-
+                                    <span>Preço:</span>
                                     <p>{{$item['preco']}}</p>
 
                                 </div>
-                                <div class="mt-3">
-                                    <button class="bg-danger ml-2 mr-2 text-white" href="#">Remover Item</button>
+
+                                <div class="cart-row-cell amount">
+                                    <span>Subtotal do Item:</span>
+                                    <p>{{$sub_total}}</p>
+
                                 </div>
+                                <form action="{{route('Carrinho.destroy',[$id])}}" class="float-right h5" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <div class="mt-3">
+                                        <button class="bg-danger ml-2 mr-2 text-white">Remover Item</button>
+                                    </div> </form>
+
 
                             </div>
 
@@ -89,31 +116,32 @@
 
                 <div class="totals">
 
-                    <p class="total-label">Subtotal</p>
-
-                    <p class="total-amount">R$13,87</p>
-
-                </div>
-
-                <div class="totals">
-
-                    <p class="total-label">Taxa</p>
-
-                    <p class="total-amount">R$2,00</p>
-
-                </div>
-
-
-                <div class="totals">
-
                     <p class="total-label">Total</p>
 
-                    <p class="total-amount">R$15,87</p>
+                    <p class="total-amount">Total {{$total}}</p>
 
                 </div>
 
-                <button>Finalizar Compra</button>
+                <form action="{{route('Finalizar.index')}}" method="POST">
+                    @CSRF
+                    <input type="hidden" id="custId" name="valor" value="{{$total}}">
 
+                    @if(count($errors) >0)
+                        <div class="alert alert-danger" role="alert">
+                            <h4 class="alert-heading">Erro na compra!</h4>
+                        </div>
+                    @endif
+
+                    @if($msg = Session::get('msg'))
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">Compra efetuada com sucesso!</h4>
+                            <p>{{$msg}}</p>
+                        </div>
+                    @endif
+
+
+                    <button  type="submit" class="btn btn-success">Finalizar Compra</button>
+                </form>
             </footer>
 
         </div>

@@ -31,9 +31,9 @@ Route::resource('Contato','ContatoController');
 
 Route::middleware(['auth'])->group(function(){
 
-    Route::get('adicionarCarrinho/{item}','CarrinhoController@addCarrinho');
-    Route::resource('Carrinho','CarrinhoController');
 
+    Route::resource('Carrinho','CarrinhoController');
+    Route::resource('Finalizar','FinalizarController');
 
 
 

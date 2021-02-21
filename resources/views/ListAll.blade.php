@@ -37,8 +37,8 @@
             <div class="list-group">
                 <a href="{{url('/')}}" class="list-group-item">Destaques da Semana</a>
                 <a href="{{route('Item.index')}}" class="list-group-item">Todos os Produtos</a>
-                <a href="{{route('Item.show','Masculino')}}" class="list-group-item">Masculino</a>
-                <a href="{{route('Item.show','Feminino')}}" class="list-group-item">Feminino</a>
+                <a href="{{route('Item.show',98)}}" class="list-group-item">Masculino</a>
+                <a href="{{route('Item.show',99)}}" class="list-group-item">Feminino</a>
 
             </div>
 
@@ -46,13 +46,8 @@
         <!-- /.col-lg-3 -->
 
         <div class="col-lg-9">
-            @if($search)
-                <span class="h2">Você acaba de buscar por: {{$search}}</span>
-            @else
-                <span class="h2">Todos os Produtos</span>
-            @endif
 
-
+            <span class="h2">Todos os Produtos</span>
 
 
             <div class="row">

@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use Mail;
 use App\Mail\SendMail;
+use Illuminate\Http\Request;
 
-class ContatoController extends Controller
+class FinalizarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class ContatoController extends Controller
      */
     public function index()
     {
-        return view('Contato');
+        return view('home.index');
     }
 
     /**
@@ -36,22 +35,23 @@ class ContatoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nome' =>'required',
-            'texto' =>'required'
-        ]);
 
-        $data = array(
-          'nome' => $request->nome,
-          'texto' => $request->texto
-        );
+        if(session()->has('carrinho')) {
+            $valor=$request->valor;
+            $data = array('carrinho' => session()->get('carrinho'), 'total'=>$valor);
+            $template_path = 'Finalizar';
+                Mail::send($template_path, $data, function ($message) {
+                    $message->to(auth()->user()->email)->subject('SexShop-Gutins');
+                    $message->from(config('mail.from.address') , 'SexShop-Gutins');
+                    $message->subject('Pagamento do seu boleto - SexShop-Gutins');
+                });
+            session()->forget('carrinho');
+            return back()
+                ->with('msg', 'Obrigado por efetuar sua compra na SexShop-Gutins!');
+        }
 
-        Mail::to(config('mail.from.address') )
-            ->send(new SendMail($data));
-
-        return back()
-            ->with('msg', 'Sua dúvida já foi enviada para nossa equipe de contado, em breve lhe responderemos');
     }
+
 
     /**
      * Display the specified resource.
