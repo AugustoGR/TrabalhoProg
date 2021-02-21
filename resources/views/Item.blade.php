@@ -50,15 +50,15 @@
         <div class="card mt-4">
             <a href="#"><img class="card-img-top" src="{{$item->link}}" height="400" width="700" alt=""></a>
           <div class="card-body">
-
+              <input type="hidden" id="custId" name="link" value="{{$item->link}}">
             <h3 class="card-title">{{$item->nome}}</h3>
-
+              <input type="hidden" id="custId" name="nome" value="{{$item->nome}}">
             <h4>{{$item->preco}}</h4>
-
+              <input type="hidden" id="custId" name="preco" value="{{$item->preco}}">
             <p class="card-text">{{$item->descricao}}</p>
-
-              <form action="{{route('Carrinho.index')}}" method="GET">
-
+              <input type="hidden" id="id" name="{{$item->id}}" value="3487">
+              <form action="{{route('Carrinho.index')}}" method="POST">
+                  @CSRF
                   <input type="hidden" id="custId" name="id" value="{{$item->id}}">
                   <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
               </form>

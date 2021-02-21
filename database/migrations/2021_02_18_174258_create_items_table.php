@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('nome');
             $table->string('preco');
             $table->string('descricao');
-            $table->integer('quantidade');
+
             $table->string('tipo');
             $table->string('link');
             $table->integer('destaque');

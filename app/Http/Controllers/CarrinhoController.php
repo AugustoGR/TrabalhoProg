@@ -12,31 +12,13 @@ class CarrinhoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        session_start();
-        if(!isset($_SESSION['itens'])){
-            $_SESSION['itens'] = array();
-        }
-        $idItem = $request->id;
-        if(!isset($_SESSION['itens'][$idItem])){
-            $_SESSION['itens'][$idItem] = 1;
-        }else{
-            $_SESSION['itens'][$idItem] += 1;
-        }
-        if(count($_SESSION['itens'])==0){
-            echo 'carrinho vazio';
-        }else{
-            $carItem = 0;
-            foreach ($_SESSION['itens'] as $idItem => $quantidade)
-            {
-                $CarItem = Item::where('id', $idItem)->get();
-                echo 'nome: '.$carItem[0]->nome.'';
+        return view('Carrinho');
             }
 
-        }
 
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -56,6 +38,36 @@ class CarrinhoController extends Controller
      */
     public function store(Request $request)
     {
+        $carrinho = session()->get('carrinho');
+
+        if(!$carrinho){
+            $carrinho = [
+                $request->id =>
+                    [ 'nome' => $request->nome,
+                        'preco' => $request->preco,
+                        'quantidade' => 1,
+                        'link' => $request->link
+
+                    ]
+            ];
+
+            session()->put('carrinho',$carrinho);
+            return redirect()->route('Carrinho.index')->with('success',"Item adicionado ao carrinho");
+
+        }
+        if(isset($carrinho[$request->id])){
+            $carrinho[$request->id]['quantidade']++;
+            session()->put('carrinho',$carrinho);
+            return redirect()->route('Carrinho.index')->with('success',"Item adicionado ao carrinho");
+        }
+        $carrinho[$request->id] =   [ 'nome' => $request->nome,
+            'preco' => $request->preco,
+            'quantidade' => 1,
+            'link' => $request->link
+
+        ];
+        session()->put('carrinho',$carrinho);
+        return redirect()->route('Carrinho.index')->with('success',"Item adicionado ao carrinho");
 
     }
 
