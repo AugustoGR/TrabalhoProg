@@ -59,7 +59,7 @@
                                 <h4 class="card-title">
                                     <a href="{{route('Item.show',$item->id)}}">{{$item->nome}}</a>
                                 </h4>
-                                <h5>{{$item->preco}}</h5>
+                                <h5>R$ {{$item->preco}}</h5>
                                 <p class="card-text">{{$item->descricao}}</p>
                             </div>
 

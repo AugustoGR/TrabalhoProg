@@ -81,13 +81,13 @@
 
                                 <div class="cart-row-cell amount">
                                     <span>Preço:</span>
-                                    <p>{{$item['preco']}}</p>
+                                    <p>R$ {{$item['preco']}}</p>
 
                                 </div>
 
                                 <div class="cart-row-cell amount">
                                     <span>Subtotal do Item:</span>
-                                    <p>{{$sub_total}}</p>
+                                    <p>R$ {{$sub_total}}</p>
 
                                 </div>
                                 <form action="{{route('Carrinho.destroy',[$id])}}" class="float-right h5" method="post">
@@ -118,7 +118,7 @@
 
                     <p class="total-label">Total</p>
 
-                    <p class="total-amount">Total {{$total}}</p>
+                    <p class="total-amount">Total R$ {{$total}}</p>
 
                 </div>
 

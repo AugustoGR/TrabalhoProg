@@ -53,7 +53,7 @@
 
             <h3 class="card-title">{{$item->nome}}</h3>
 
-            <h4>{{$item->preco}}</h4>
+            <h4>R$ {{$item->preco}}</h4>
 
             <p class="card-text">{{$item->descricao}}</p>
               <input type="hidden" id="id" name="{{$item->id}}" value="3487">
